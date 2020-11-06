@@ -135,12 +135,6 @@ fn testnet_genesis(
 	enable_println: bool,
 ) -> GenesisConfig {
 	GenesisConfig {
-		pallet_contracts: Some(ContractsConfig {
-            current_schedule: pallet_contracts::Schedule {
-                    enable_println,
-                    ..Default::default()
-            },
-        }),
 		frame_system: Some(SystemConfig {
 			// Add Wasm runtime to storage.
 			code: wasm_binary.to_vec(),
@@ -160,5 +154,11 @@ fn testnet_genesis(
 			// Assign network admin rights.
 			key: root_key,
 		}),
+		pallet_contracts: Some(ContractsConfig {
+            current_schedule: pallet_contracts::Schedule {
+                    enable_println,
+                    ..Default::default()
+            },
+        }),
 	}
 }
